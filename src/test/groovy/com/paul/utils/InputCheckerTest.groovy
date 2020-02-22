@@ -5,7 +5,7 @@ import spock.lang.Specification
 
 @MicronautTest
 class InputCheckerTest extends Specification {
-    def "isInputOkForInts"() {
+    def "testIsInputOkForInts"() {
         when:
         boolean res = InputChecker.isInputOk(input)
 
@@ -21,7 +21,7 @@ class InputCheckerTest extends Specification {
         16    | false
     }
 
-    def "isInputOkForOtherClasses"() {
+    def "testIsInputOkForOtherClasses"() {
         when:
         boolean res = InputChecker.isInputOk(input)
 
