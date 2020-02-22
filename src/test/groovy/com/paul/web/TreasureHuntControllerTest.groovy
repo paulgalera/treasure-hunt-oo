@@ -15,7 +15,7 @@ class TreasureHuntControllerTest extends Specification {
     @Client("/")
     RxHttpClient client
 
-    def "testIntParam"() {
+    def "testAllowedIntParam"() {
         when:
         HttpRequest req = HttpRequest.GET("/11")
         String rsp = client.toBlocking().retrieve(req)
@@ -24,10 +24,19 @@ class TreasureHuntControllerTest extends Specification {
         rsp == "Still looking for a treasure...11"
     }
 
+    def "testWrongIntParam"() {
+        when:
+        HttpRequest req = HttpRequest.GET("/18")
+        String rsp = client.toBlocking().retrieve(req)
+
+        then:
+        rsp == "Holy smoke...18 is a wrong index for a 5x5 TreasureMap!"
+    }
+
     void "testStringParam"() {
         when:
         HttpRequest req = HttpRequest.GET("/crap")
-        String rsp = client.toBlocking().retrieve(req)
+        client.toBlocking().retrieve(req)
 
         then:
         thrown(HttpClientException)
