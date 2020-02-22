@@ -1,6 +1,7 @@
 package com.paul.web
 
 import com.paul.service.TreasureHuntService
+import com.paul.utils.InputChecker
 import groovy.transform.CompileStatic
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
@@ -23,6 +24,11 @@ class TreasureHuntController {
     @Get("{startPoint}")
     @Produces(MediaType.TEXT_PLAIN)
     String index(int startPoint) {
-        treasureHuntService.findTreasure(startPoint)
+        if (InputChecker.isInputOk(startPoint)) {
+            treasureHuntService.findTreasure(startPoint)
+        }
+        else{
+            "Holy smoke...something's wrong!"
+        }
     }
 }
