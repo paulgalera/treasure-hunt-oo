@@ -17,6 +17,6 @@ final class TreasureHuntService {
     final String findTreasure(int startingPoint) {
         ArrayList<ArrayList<Integer>> treasureMap = TreasureMap.getMAP()
         treasureHunter.setTreasureMap(treasureMap)
-        treasureHunter.digForTreasure(startingPoint)
+        treasureHunter.goHuntingForTreasure(startingPoint)
     }
 }

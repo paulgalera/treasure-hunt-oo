@@ -26,4 +26,13 @@ class TreasureHunterTest extends Specification {
         path.toString() == "[14, 41, 33, 52]"
     }
 
+    def "testGoCheckInitialSpotsTreasureFound"() {
+        when:
+        List<Integer> path = treasureHunter.goHuntingForTreasure(52)
+
+        then:
+        path.size() > 0
+        path.toString() == "[52]"
+    }
+
 }

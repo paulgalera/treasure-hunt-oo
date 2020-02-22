@@ -21,7 +21,7 @@ class TreasureHuntControllerTest extends Specification {
         String rsp = client.toBlocking().retrieve(req)
 
         then:
-        rsp.toString() == "[11, 34, 42, 15, 25, 31, 54, 13, 32, 45, 35, 23, 43, 51, 21, 14, 41, 33, 52]"
+        rsp.toString() == "[11, 55, 15, 25, 31, 54, 13, 32, 45, 35, 23, 43, 51, 21, 14, 41, 33, 52]"
     }
 
     def "testWrongIntParam"() {
