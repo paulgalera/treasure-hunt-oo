@@ -19,14 +19,19 @@ final class TreasureHuntService {
     final String findTreasure(int startingPoint) {
         ArrayList<ArrayList<Integer>> treasureMap = TreasureMap.getMAP()
         treasureHunter.setTreasureMap(treasureMap)
-        treasureHunter.goHuntingForTreasure(startingPoint)
-                .stream()
-                .map(new Function<Integer, String>() {
-                    @Override
-                    String apply(Integer a) {
-                        "${Math.floor(a / 10).toInteger()} ${a % 10}"
-                    }
-                })
-                .collect(Collectors.joining("\n"))
+        List<Integer> treasurePath = treasureHunter.goHuntingForTreasure(startingPoint)
+        if (treasurePath != null) {
+            treasurePath
+                    .stream()
+                    .map(new Function<Integer, String>() {
+                        @Override
+                        String apply(Integer a) {
+                            "${Math.floor(a / 10).toInteger()} ${a % 10}"
+                        }
+                    })
+                    .collect(Collectors.joining("\n"))
+        } else {
+            "NO TREASURE"
+        }
     }
 }

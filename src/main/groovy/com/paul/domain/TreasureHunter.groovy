@@ -8,13 +8,19 @@ import javax.inject.Singleton
 @Singleton
 final class TreasureHunter {
 
+    final static Integer MAX_STEPS_TO_TREASURE = 28
+
     ArrayList<ArrayList<Integer>> treasureMap
 
     private List<Integer> digForTreasure(int location, List<Integer> pathToTreasure = new ArrayList<Integer>()) {
         int clueFound = pokeLocation(location)
         pathToTreasure.add(location)
-        if (clueFound == location)
+        if (clueFound == location) {
             return pathToTreasure
+        }
+        if (pathToTreasure.size() == MAX_STEPS_TO_TREASURE) {
+            return null
+        }
         digForTreasure(clueFound, pathToTreasure)
     }
 

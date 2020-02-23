@@ -31,7 +31,7 @@ class TreasureHunterTest extends Specification {
         List<Integer> path = treasureHunter.goHuntingForTreasure(52)
 
         then:
-        path.size() > 0
+        path.size() == 1
         path.toString() == "[52]"
     }
 
