@@ -1,6 +1,8 @@
 package com.paul.domain
 
-final class TreasureMap {
+import groovy.transform.Immutable
+
+@Immutable class TreasureMap {
     final static ArrayList<ArrayList<Integer>> MAP = [[34, 21, 32, 41, 25],
                                                       [14, 42, 43, 14, 31],
                                                       [54, 45, 52, 42, 23],

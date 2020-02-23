@@ -9,7 +9,6 @@ import javax.inject.Singleton
 final class TreasureHunter {
 
     ArrayList<ArrayList<Integer>> treasureMap
-    List<Integer> path = new ArrayList<>()
 
     private List<Integer> digForTreasure(int location, List<Integer> pathToTreasure = new ArrayList<Integer>()) {
         int clueFound = pokeLocation(location)
@@ -31,7 +30,6 @@ final class TreasureHunter {
     final List<Integer> goHuntingForTreasure(int location) {
         List<Integer> pathToTreasure = new ArrayList<>()
         List<Integer> initialSpots = Arrays.asList(location, 55, 15)
-
         pathToTreasure.addAll(goCheckInitialSpots(initialSpots))
         if (pathToTreasure.size() == 3) {
             pathToTreasure = digForTreasure(pokeLocation(pathToTreasure.get(pathToTreasure.size() - 1)), pathToTreasure)
