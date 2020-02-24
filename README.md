@@ -1,3 +1,3 @@
 # treasure-hunt-oo
 
-GET request: <IP>:8080/{location}
+GET request: yourIP:8080/{location}
