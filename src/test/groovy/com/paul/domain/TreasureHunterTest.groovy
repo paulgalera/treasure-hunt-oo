@@ -4,17 +4,14 @@ import io.micronaut.test.annotation.MicronautTest
 import spock.lang.Shared
 import spock.lang.Specification
 
-import javax.inject.Inject
-
 @MicronautTest
 class TreasureHunterTest extends Specification {
 
-    @Inject
     @Shared
     TreasureHunter treasureHunter
 
     def setupSpec() {
-        treasureHunter.setTreasureMap(TreasureMap.getMAP() as ArrayList<ArrayList<Integer>>)
+        treasureHunter = new TreasureHunter(TreasureMap.getMAP() as ArrayList<ArrayList<Integer>>)
     }
 
     def "testDigForTreasure"() {

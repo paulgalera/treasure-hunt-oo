@@ -1,11 +1,11 @@
 package com.paul.domain
 
-import groovy.util.logging.Slf4j
+import groovy.transform.Immutable
 
 import javax.inject.Singleton
 
-@Slf4j
 @Singleton
+@Immutable
 final class TreasureHunter {
 
     final static Integer MAX_STEPS_TO_TREASURE = 28
@@ -27,9 +27,7 @@ final class TreasureHunter {
     private int pokeLocation(int location) {
         int row = Math.floor(location / 10 - 1).toInteger()
         int col = (location % 10) - 1
-        log.info("digging in row: ${row}; col: ${col}")
         int clueFound = treasureMap.get(row).get(col)
-        log.info("found clue: $clueFound")
         clueFound
     }
 

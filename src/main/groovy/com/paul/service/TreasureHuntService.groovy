@@ -2,7 +2,6 @@ package com.paul.service
 
 import com.paul.domain.TreasureHunter
 import com.paul.domain.TreasureMap
-import groovy.util.logging.Slf4j
 
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -10,15 +9,16 @@ import java.util.function.Function
 import java.util.stream.Collectors
 
 @Singleton
-@Slf4j
 final class TreasureHuntService {
 
-    @Inject
     TreasureHunter treasureHunter
 
+    @Inject
+    TreasureHuntService(TreasureHunter treasureHunter) {
+        this.treasureHunter = new TreasureHunter(TreasureMap.getMAP() as ArrayList<ArrayList<Integer>>)
+    }
+
     final String findTreasure(int startingPoint) {
-        ArrayList<ArrayList<Integer>> treasureMap = TreasureMap.getMAP()
-        treasureHunter.setTreasureMap(treasureMap)
         List<Integer> treasurePath = treasureHunter.goHuntingForTreasure(startingPoint)
         if (treasurePath != null) {
             treasurePath
